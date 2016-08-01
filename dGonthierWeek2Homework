@@ -2,8 +2,10 @@ public with sharing class WeekTwoHomework {
 	
 
 	public static void homeworkAssignmentMethod () {
-		//Read through the set-up below and then complete the code following the prompts.  When you're done, make sure to compile (save) your work
-		//Open Execute Anonymous in the Developer Console and execute your code by typing in: WeekTwoHomework.homeworkAssignmentMethod();
+		//Read through the set-up below and then complete the code following the prompts.  When you're done, make sure
+		//to compile (save) your work
+		//Open Execute Anonymous in the Developer Console and execute your code by typing in: 
+		//WeekTwoHomework.homeworkAssignmentMethod();
 		//Read through the debug statements to make sure you're done your work correctly.
 		
 		//************************************************************************************************************
@@ -11,8 +13,8 @@ public with sharing class WeekTwoHomework {
 		// 1. Add two more whole numbers to this list using .add() 
 		List < Integer > numberList = new List < Integer >{0,1,1,2,3,5,8,13,21,34};
 
-            numberList.add(55);
-        	numberList.add(89);
+		numberList.add(55);
+		numberList.add(89);
 
 		//Checking our work:
 		system.debug('This number should be 12: ' +numberList.size());
@@ -20,8 +22,10 @@ public with sharing class WeekTwoHomework {
 
 
 		//************************************************************************************************************
-		// 2. Create a new Lead and insert it in the database. (If you're stuck, look back at the WeekTwoClassExercises class for an example of creating a new SObject Record)
-		//You can give it any values you like, but remember that last name and Company are required fields (both are simple text fields.)
+		// 2. Create a new Lead and insert it in the database. (If you're stuck, look back at the WeekTwoClassExercises class
+		// for an example of creating a new SObject Record)
+		//You can give it any values you like, but remember that last name and Company are required fields (both are simple
+		//text fields.)
 
 		// Create a new Lead record 
 		Lead ld = new Lead();
@@ -49,7 +53,7 @@ public with sharing class WeekTwoHomework {
 
 		while (counter < 5) {
 			counter++;  //without this line to increment counter, we'd have an infinite loop!
-            System.debug('Loop count = ' + counter);
+            		System.debug('Loop count = ' + counter);
 		}
 
 		System.debug('Done with the loop, it ran: ' + counter + ' times.');
