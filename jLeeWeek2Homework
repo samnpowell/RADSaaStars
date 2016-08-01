@@ -47,10 +47,6 @@ public with sharing class WeekTwoHomework {
 		//delete the slashes so that the loop is no longer commented out and compile the class.
 
 		//Can you add a debug statement to print out the counter value every time it runs through the loop?
-
-        }
-
-	public static void WhileLoops() {
         
 		//Starts the counter at 0
 		Integer counter = 0; 
