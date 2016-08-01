@@ -30,12 +30,12 @@ public with sharing class WeekTwoHomework {
 		// Create a new Lead record 
 		Lead ld = new Lead();
 		
-        // Enter data in required fields
-        ld.LastName = 'Gonthier';
-        ld.FirstName = 'John';
-        ld.Company = 'ABC Engineering';
+        	// Enter data in required fields
+		ld.LastName = 'Gonthier';
+        	ld.FirstName = 'John';
+        	ld.Company = 'ABC Engineering';
 	
-        // Add the new lead to the database
+        	// Add the new lead to the database
 		insert ld;
 
 		//Checking our work:
