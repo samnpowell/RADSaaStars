@@ -1,0 +1,177 @@
+//This is Jennifer Lee's homework for Week 4.
+
+public with sharing class WeekFourHomework {
+	
+
+	public static void setsReview(){
+
+		//Your assignment: Play with Sets!
+
+		// 1.  Create a set of Strings and add at least 5 entries
+		Set < String > maColleges = new Set < String >();
+        maColleges.add('Harvard');
+		maColleges.add('MIT');
+		maColleges.add('Boston College');
+		maColleges.add('Northeastern');
+		maColleges.add('Boston University');
+
+		//Why a set instead of a list?  Usually because we need each entry in the collection to be unique.
+		//Perhaps we're creating a list of cuisines and it's possible we'll encounter the same one twice, but we don't want it to appear twice
+              
+		//Use system.debug to print out the size of your set
+		system.debug('Size of MA College Set: ' + maColleges.size());
+
+		//Add an item to your set that already exists
+		maColleges.add('Boston University');
+
+		//Use system.debug to print out the size again,  they should be the same!
+		system.debug('Making sure the size of MA College Set is still the same: ' + maColleges.size());
+        
+    }
+
+
+		// 2.  Bonus Points!  Check out the documentation on Sets. Go to the section titled List Methods. Pick one of the methods to try out and print the results to the debug log.  
+		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_set.htm
+		//Hint:  can you print out if the set is empty?  Can you clone it?
+    
+    //create a set of strings nyColleges and print the empty set
+    public static void bonusPointsEmptySet(){
+        Set < String > nyColleges = new Set < String >();
+        Boolean result = nyColleges.isEmpty();
+		System.assertEquals(true, result);
+        System.debug('Size of nyColleges set: ' +nyColleges.size());
+        
+    }
+	
+    public static void bonusPointsClone(){
+        //Creates the set myVacationSpots and adds 5 items to the set
+        Set < String > myVacationSpots = new Set < String >();
+        myVacationSpots.add('Florida');
+		myVacationSpots.add('Hawaii');
+        myVacationSpots.add('Los Angeles');
+		myVacationSpots.add('Aruba');
+		myVacationSpots.add('Paris');
+		
+        // returns the number of items in the set
+		System.debug('Number of items in the myVacationSpots set: ' + myVacationSpots.size());  
+		// returns the items in the set
+        System.debug('Items in the myVacationSpots: ' +myVacationSpots);
+        
+        // clones the myVacationSpots set
+		Set <String> myVacationSpotsClone = myVacationSpots.clone();
+        // returns the items in the cloned set
+        System.debug('Items in the myVacationSpotsClone: ' +myVacationSpotsClone);
+    }
+
+
+		public static void mapsReview () {
+
+		//Time to get creative!  
+
+		// 1. Create a new Map.  You can use whatever primitives/object types you like, as long as they make sense.
+		// Try to add at least 5 Key/value pairs.
+		Map < String, String > stateAndZipCombo = new Map < String, String >(); 
+
+		//add 5 key/value pairs for state and zip
+		stateAndZipCombo.put('MA', '02116');
+		stateAndZipCombo.put('NY','10001');
+		stateAndZipCombo.put('CA','90210');
+		stateAndZipCombo.put('NH','03033');
+		stateAndZipCombo.put('TX','73301');
+
+		//Now, in the debug log, print out  a list of the values.
+		List < String > mapValuesList = stateandZipCombo.values();
+        system.debug('The values in our stateandZipCombo map: '+mapValuesList);
+
+		//Can you print out a set of the Keys?
+        Set <String> mapKeysSet = stateAndZipCombo.KeySet();
+		system.debug('The KeySet of our Map: '+mapKeysSet);    
+            
+        }
+
+		// 2. Bonus!  Check out the documentation on Maps. Go to the section titled Map Methods.  Manipulate the Map using one of the methods defined in the documentation
+		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_map.htm
+		// Hint: Can you remove an entry using the key?  Can you clear out the map without deleting it?
+		
+    	//method to remove an entry using the key
+        public static void bonusPointsRemove(){
+		// Try to add at least 5 Key/value pairs.
+		Map < String, String > stateAndZipCombo = new Map < String, String >(); 
+
+		//add 5 key/value pairs for state and zip
+		stateAndZipCombo.put('MA', '02116');
+		stateAndZipCombo.put('NY','10001');
+		stateAndZipCombo.put('CA','90210');
+		stateAndZipCombo.put('NH','03033');
+		stateAndZipCombo.put('TX','73301');
+
+        //Remove TX key
+		String removestateAndZipCombo = stateAndZipCombo.remove('TX');
+		String code2 = stateAndZipCombo.get('TX');
+		
+        //assert that code2 (removing key TX) results is a null value    
+        System.assertEquals(null, code2); 
+       	//print the value associated to the TX key
+        System.debug('What is the value for key TX?' +code2);         
+            }    
+
+    //method to clear out a map without deleting it
+    public static void bonusPointsClearMap(){
+    	
+        // Try to add at least 5 Key/value pairs.
+		Map < String, String > stateAndZipCombo = new Map < String, String >(); 
+
+		//add 5 key/value pairs for state and zip
+		stateAndZipCombo.put('MA', '02116');
+		stateAndZipCombo.put('NY','10001');
+		stateAndZipCombo.put('CA','90210');
+		stateAndZipCombo.put('NH','03033');
+		stateAndZipCombo.put('TX','73301');
+        
+        //prints of the map values
+        List < String > mapValuesList = stateandZipCombo.values();
+        system.debug('The values in our stateandZipCombo map: '+mapValuesList);
+        
+        //clears the map
+        stateAndZipCombo.clear();  
+		// returns true if the set has zero elements
+		System.debug('Is the map empty? ' + stateAndZipCombo.isEmpty());  
+        
+    }
+    
+    
+	public static void listsReview() {
+
+		// 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
+        List < String > dogList = new List <string>{'Pomeranian','Beagle','King Charles','Pitbull','Poodle'};
+        //print out values in list
+        system.debug('List of items in the dogList: ' +dogList);    
+
+		// 2. Create a second list of Strings and add 5 or more entries to this list.
+		List < String > colorList = new List < String >();
+        colorList.add('Burgundy');
+        colorList.add('Violet');
+        colorList.add('Coral');
+        colorList.add('Cream');
+        colorList.add('Teal');
+        colorList.add('Brick');
+        //print out values in list
+        system.debug('List of items in the colorList: ' +colorList);    
+
+    }
+
+		//3.  Bonus! Using the documentation on standard List methods from Salesforce, add the items from your first list, to your second list with one command
+		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_list.htm
+		
+    	public static void bonusPointsCombo(){
+    	List < String > dogList = new List <string>{'Pomeranian','Beagle','King Charles','Pitbull','Poodle'};
+		List < String > colorList = new List <string>{'Burgundy','Violet','Coral','Cream','Teal','Brick'};
+		colorList.addall(dogList);
+
+		//4.  Can you now loop through your combined list and print it to the debug log?  (Hint:  Check the documentation!)
+		system.debug('Here are all the items in the colorList: ' +colorList);
+	}
+
+
+
+}
