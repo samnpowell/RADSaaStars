@@ -1,0 +1,19 @@
+//2.Write a public method that calls the amIFeelingGood and prints out the returned string to the debug log.  
+	//You'll need to pass in a boolean variable as the argument!
+ public static void themFeels() {
+        
+    // I could declare a boolean and pass the method that value OR I could tell the method it's a boolean /this kind of makes sense to me/
+    // and pass it a value when I execute, I think
+    // I'll declare it..
+    	boolean isAlive = true;
+    
+    // put the value of the amIFeelingGood method in a string
+    String amI = amIFeelingGood(isAlive);
+    // Writing this out..
+    // String 'variableName' = 'the method(the boolean variable I declared)';
+    // Write it to the debug log
+    
+     System.debug('Am I even Alive? ');
+        
+    }
+	
