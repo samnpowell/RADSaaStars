@@ -1,0 +1,27 @@
+public with sharing class WeekThreeHomework {
+
+	//Let's practice calling different methods by writing our very own methods. You will write and save methods in the space below
+	//that call the existing methods you see already written here.  Ready?  Let's Go!
+
+
+	//Sample: Here is a public method that calls the getfavoriteColorsMethod below and prints the results to our debug log
+	public static void printOutFavoriteColorsDemo () {
+		List < String > favoriteColors = getFavoriteColors();
+		system.debug('Here are the favorite colors: '+ favoriteColors);
+	}
+
+
+	//1.  Write a public method that calls the getFavoriteColors method to get a list of favorite colors, then add 
+	//another color to the list before printing it to the debug log. 
+	//(see the sample above for an example of calling that method-You can even start by copying and pasting that method here, renaming and modifying it)
+    public static void printFavouriteColoursNow() {
+        
+        // call the getFavoriteColors method and assign that methods values to the new list variable we create
+   		List < String > favouriteColoursNow = getFavoriteColors();    
+        
+        // add a new colour to the new list variable
+        favouriteColoursNow.add('Teal');
+        
+        // Print the new list to the debug log
+        System.debug('These are the colours plus my sneaky colour ' + favouriteColoursNow);
+    }
