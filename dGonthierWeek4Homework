@@ -3,9 +3,9 @@ public with sharing class WeekFourHomework {
 
 	public static void setsReview(){
 
-		//Your assignment: Play with Sets!
+	//Your assignment: Play with Sets!
 
-		// 1.  Create a set of Strings and add at least 5 entries
+	// 1.  Create a set of Strings and add at least 5 entries
 		
       Set < String > regions = new Set < String >();
       // Add the 8 ODOT regions to the set
