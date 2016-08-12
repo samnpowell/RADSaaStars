@@ -33,90 +33,90 @@ public with sharing class WeekFourHomework {
 	// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_set.htm
 	// Hint:  can you print out if the set is empty?  Can you clone it?
 		
-      // Print the Regions set and then clone the Regions set to create the Regions2 set
-      system.debug('The Regions set: ' + regions);
-      Set<String> regions2 = regions.clone();
-      system.debug('The Regions2 set created by cloning: ' + regions2);
+      	// Print the Regions set and then clone the Regions set to create the Regions2 set
+      	system.debug('The Regions set: ' + regions);
+      	Set<String> regions2 = regions.clone();
+      	system.debug('The Regions2 set created by cloning: ' + regions2);
         
-      // add an element to the Regions2 set and print both the Region1 set and the updated Regions2 set
-      regions2.add('Clackamas');
-      system.debug('The updated Regions2 set:' + regions2);
+      	// add an element to the Regions2 set and print both the Region1 set and the updated Regions2 set
+      	regions2.add('Clackamas');
+      	system.debug('The updated Regions2 set:' + regions2);
 		
-      // Compare the Regions set to the Regions 2 set. Print 'True' if the same, 'False' if not the same
-      system.debug('The Regions set and Regions2 set are equivalent. True or False? ' + (regions.equals(regions2)));
+      	// Compare the Regions set to the Regions 2 set. Print 'True' if the same, 'False' if not the same
+      	system.debug('The Regions set and Regions2 set are equivalent. True or False? ' + (regions.equals(regions2)));
         
-      // Clear the Regions2 set and print the result
-      regions2.clear();
-      system.debug('The Regions2 set should now be empty. ' + regions2);
+      	// Clear the Regions2 set and print the result
+      	regions2.clear();
+      	system.debug('The Regions2 set should now be empty. ' + regions2);
 	}
 
 	public static void mapsReview () {
 
-		// Time to get creative!  
+	// Time to get creative!  
 
-		// 1. Create a new Map.  You can use whatever primitives/object types you like, as long as they make sense.
-		// Try to add at least 5 Key/value pairs.
-		  Map < Integer, String > productsById = new Map < Integer, String >();
-      productsById.put(238101, 'Keep Portland Weird Womens Tshirt');
-      productsById.put(238201, 'Keep Portland Weird Mens Tshirt');
-      productsById.put(238301, 'Keep Portland Weird 16oz beer mug');
-      productsById.put(238401, 'Keep Portland Weird Cap');
-      productsById.put(238501, 'Keep Portland Weird Visor');
+	// 1. Create a new Map.  You can use whatever primitives/object types you like, as long as they make sense.
+	// Try to add at least 5 Key/value pairs.
+	Map < Integer, String > productsById = new Map < Integer, String >();
+      	productsById.put(238101, 'Keep Portland Weird Womens Tshirt');
+      	productsById.put(238201, 'Keep Portland Weird Mens Tshirt');
+      	productsById.put(238301, 'Keep Portland Weird 16oz beer mug');
+      	productsById.put(238401, 'Keep Portland Weird Cap');
+      	productsById.put(238501, 'Keep Portland Weird Visor');
 
-		  //Now, in the debug log, print out  a list of the values.
-		  system.debug('The product values are: ' + productsById.values());
-
-
-		  //Can you print out a set of the Keys?
-		  system.debug('The product keys are: ' + productsById.keySet());
+	//Now, in the debug log, print out  a list of the values.
+	system.debug('The product values are: ' + productsById.values());
 
 
-		// 2. Bonus!  Check out the documentation on Maps. Go to the section titled Map Methods.  
-		// Manipulate the Map using one of the methods defined in the documentation
-		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_map.htm
-		// Hint: Can you remove an entry using the key?  Can you clear out the map without deleting it?
+	//Can you print out a set of the Keys?
+	system.debug('The product keys are: ' + productsById.keySet());
+
+
+	// 2. Bonus!  Check out the documentation on Maps. Go to the section titled Map Methods.  
+	// Manipulate the Map using one of the methods defined in the documentation
+	// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_map.htm
+	// Hint: Can you remove an entry using the key?  Can you clear out the map without deleting it?
 		
-      // Clone the map to newProductsById map and verify by printing new map
-      Map < Integer, String > newProductsById = productsById.clone();
-      system.debug('The cloned New Products by Id map: ' + newProductsById);
+      	// Clone the map to newProductsById map and verify by printing new map
+      	Map < Integer, String > newProductsById = productsById.clone();
+      	system.debug('The cloned New Products by Id map: ' + newProductsById);
         
-      // Add a new product key/value pair to the cloned map
-      newProductsById.put(238601, 'Keep Portland Weird Poster');
+      	// Add a new product key/value pair to the cloned map
+      	newProductsById.put(238601, 'Keep Portland Weird Poster');
         
-      // Remove the Beer Mug from the original map using its key and print resulting map
-      productsById.remove(238301);
-      system.debug('Edited productsById map: ' + productsById);
+      	// Remove the Beer Mug from the original map using its key and print resulting map
+      	productsById.remove(238301);
+      	system.debug('Edited productsById map: ' + productsById);
         
-      // Clear the productsById map. Verify by printing to debug log
-      productsById.clear();
-      system.debug('Cleared productsById map: ' + productsById);
+      	// Clear the productsById map. Verify by printing to debug log
+      	productsById.clear();
+      	system.debug('Cleared productsById map: ' + productsById);
 	}
 
 	public static void listsReview() {
 
-		// 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
+	// 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
 		
-		  List<string> travelDocs = new List<String>{'Passport', 'Drivers License', 'Boarding Pass', 'Itinerary', 'Presentation notes' };
-		  system.debug('Travel Documents: ' + travelDocs);
+	List<string> travelDocs = new List<String>{'Passport', 'Drivers License', 'Boarding Pass', 'Itinerary', 'Presentation notes' };
+	system.debug('Travel Documents: ' + travelDocs);
 
-		// 2. Create a second list of Strings and add 5 or more entries to this list.
+	// 2. Create a second list of Strings and add 5 or more entries to this list.
         
-      List<string> equipment = new List<string>{'Laptop', 'Laptop charger', 'Projector', 'HDMI cord', 'Remote', 'Laser Pointer'};
-		  system.debug('Presentation Equipment: ' + equipment);
+      	List<string> equipment = new List<string>{'Laptop', 'Laptop charger', 'Projector', 'HDMI cord', 'Remote', 'Laser Pointer'};
+	system.debug('Presentation Equipment: ' + equipment);
 
-		// 3. Bonus! Using the documentation on standard List methods from Salesforce, add the items from your first list, 
-		// to your second list with one command
-		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_list.htm
+	// 3. Bonus! Using the documentation on standard List methods from Salesforce, add the items from your first list, 
+	// to your second list with one command
+	// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_list.htm
 		
-      equipment.addAll(travelDocs);
-      system.debug('Combined List: ' + equipment);
+      	equipment.addAll(travelDocs);
+      	system.debug('Combined List: ' + equipment);
 		
-    //4.  Can you now loop through your combined list and print it to the debug log?  (Hint:  Check the documentation!)
+    	//4.  Can you now loop through your combined list and print it to the debug log?  (Hint:  Check the documentation!)
     
-      integer loopCount = 0;
-      for (loopCount = 0; loopCount < 11; loopCount++) {
+      	integer loopCount = 0;
+      	for (loopCount = 0; loopCount < 11; loopCount++) {
         system.debug('Individual items in combined list: ' + equipment[loopCount]);
-      }
+      	}
  	}
 
 }
