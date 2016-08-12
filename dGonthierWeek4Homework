@@ -7,31 +7,31 @@ public with sharing class WeekFourHomework {
 
 	// 1.  Create a set of Strings and add at least 5 entries
 		
-      Set < String > regions = new Set < String >();
-      // Add the 8 ODOT regions to the set
-      regions.add('ODOT 1');
-      regions.add('ODOT 2');
-      regions.add('ODOT 3');
-      regions.add('ODOT 4');
-      regions.add('ODOT 5');
-      regions.add('ODOT 6');
-      regions.add('ODOT 7');
-      regions.add('ODOT 8');
+      	Set < String > regions = new Set < String >();
+      	// Add the 8 ODOT regions to the set
+      	regions.add('ODOT 1');
+      	regions.add('ODOT 2');
+      	regions.add('ODOT 3');
+      	regions.add('ODOT 4');
+      	regions.add('ODOT 5');
+      	regions.add('ODOT 6');
+      	regions.add('ODOT 7');
+      	regions.add('ODOT 8');
 
-		  //Use system.debug to print out the size of your set
-		  system.debug('The size of the Regions set is: ' + regions.size());
+	//Use system.debug to print out the size of your set
+	system.debug('The size of the Regions set is: ' + regions.size());
 
-		  //Add an item to your set that already exists
-		  regions.add('ODOT 6');
+	//Add an item to your set that already exists
+	regions.add('ODOT 6');
 
-		  //Use system.debug to print out the size again,  they should be the same!
-		  system.debug('The size of the Regions set is: ' + regions.size());
+	//Use system.debug to print out the size again,  they should be the same!
+	system.debug('The size of the Regions set is: ' + regions.size());
 
 
-		// 2.  Bonus Points!  Check out the documentation on Sets. Go to the section titled 
-		// List Methods. Pick one of the methods to try out and print the results to the debug log.  
-		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_set.htm
-		// Hint:  can you print out if the set is empty?  Can you clone it?
+	// 2.  Bonus Points!  Check out the documentation on Sets. Go to the section titled 
+	// List Methods. Pick one of the methods to try out and print the results to the debug log.  
+	// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_set.htm
+	// Hint:  can you print out if the set is empty?  Can you clone it?
 		
       // Print the Regions set and then clone the Regions set to create the Regions2 set
       system.debug('The Regions set: ' + regions);
