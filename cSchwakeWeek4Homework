@@ -3,122 +3,122 @@
 public with sharing class WeekFourHomework {
 	
 
-	public static void setsReview(){
+     public static void setsReview(){
 
-		//Your assignment: Play with Sets!
+	//Your assignment: Play with Sets!
 		
-		// 1.  Create a set of Strings and add at least 5 entries
+	// 1.  Create a set of Strings and add at least 5 entries
 
    	Set < String > horseTypes = new Set < String >();
 
-	 	horseTypes.add('Thoroughbreed');
-    horseTypes.add('Quarter Horse');
-    horseTypes.add('Morgan');
-    horseTypes.add('Paso Fino');
-    horseTypes.add('Peruvian Paso');
-    horseTypes.add('Arabian');
+	horseTypes.add('Thoroughbreed');
+    	horseTypes.add('Quarter Horse');
+    	horseTypes.add('Morgan');
+    	horseTypes.add('Paso Fino');
+    	horseTypes.add('Peruvian Paso');
+    	horseTypes.add('Arabian');
         
-	  //Use system.debug to print out the size of your set
+	//Use system.debug to print out the size of your set
 
-	  System.debug('Size of horseTypes set: ' + horseTypes.size());
+	System.debug('Size of horseTypes set: ' + horseTypes.size());
         
-		//Add an item to your set that already exists
+	//Add an item to your set that already exists
 
-		horseTypes.add('Quarter Horse');
+	horseTypes.add('Quarter Horse');
         
-		//Use system.debug to print out the size again,  they should be the same!
+	//Use system.debug to print out the size again,  they should be the same!
 
-    System.debug('Size of horseTypes set: ' + horseTypes.size());
+    	System.debug('Size of horseTypes set: ' + horseTypes.size());
 
 
-		// 2.  Bonus Points!  Check out the documentation on Sets. Go to the section titled List Methods. Pick one of the methods to try out and print the results to the debug log.  
-		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_set.htm
-		//Hint:  can you print out if the set is empty?  
-		//Yes. isEmpty() will return true if the set is empty.
-		//Can you clone it?
-		//Yes. You can use clone() to make a duplicate copy of the set.
+	// 2.  Bonus Points!  Check out the documentation on Sets. Go to the section titled List Methods. Pick one of the methods to try out and print the results to the debug log.  
+	// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_set.htm
+	//Hint:  can you print out if the set is empty?  
+	//Yes. isEmpty() will return true if the set is empty.
+	//Can you clone it?
+	//Yes. You can use clone() to make a duplicate copy of the set.
 
-		Boolean result = horseTypes.contains('Morgan');
+	Boolean result = horseTypes.contains('Morgan');
 		
-    System.debug('Does set contain Value: ' +result);
+    	System.debug('Does set contain Value: ' +result);
 
-	}
+     }
 
-	public static void mapsReview () {
+     public static void mapsReview () {
 
-		//Time to get creative!  
+	//Time to get creative!  
 
-		// 1. Create a new Map.  You can use whatever primitives/object types you like, as long as they make sense.
-		// Try to add at least 5 Key/value pairs.
+	// 1. Create a new Map.  You can use whatever primitives/object types you like, as long as they make sense.
+	// Try to add at least 5 Key/value pairs.
 
-		Map < Integer, String > kentuckyDerbyWinners = new Map < Integer, String >();
+	Map < Integer, String > kentuckyDerbyWinners = new Map < Integer, String >();
         
-    kentuckyDerbyWinners.put(1973, 'Secretariat');
-    kentuckyDerbyWinners.put(1977, 'Seattle Slew');
-    kentuckyDerbyWinners.put(1987, 'Alysheba');
-    kentuckyDerbyWinners.put(1990, 'Unbridled');
-    kentuckyDerbyWinners.put(2004, 'Smarty Jones');
-    kentuckyDerbyWinners.put(2009, 'Mine That Bird');
-    kentuckyDerbyWinners.put(2016, 'Nyquist');
+    	kentuckyDerbyWinners.put(1973, 'Secretariat');
+    	kentuckyDerbyWinners.put(1977, 'Seattle Slew');
+    	kentuckyDerbyWinners.put(1987, 'Alysheba');
+    	kentuckyDerbyWinners.put(1990, 'Unbridled');
+    	kentuckyDerbyWinners.put(2004, 'Smarty Jones');
+    	kentuckyDerbyWinners.put(2009, 'Mine That Bird');
+    	kentuckyDerbyWinners.put(2016, 'Nyquist');
         
-		//Now, in the debug log, print out  a list of the values.
+	//Now, in the debug log, print out  a list of the values.
 
-		List <String> mapValuesList = kentuckyDerbyWinners.values();
+	List <String> mapValuesList = kentuckyDerbyWinners.values();
 
-		System.debug('Horses Name: '+mapValuesList);
+	System.debug('Horses Name: '+mapValuesList);
 
-		//Can you print out a set of the Keys?
+	//Can you print out a set of the Keys?
 
-		Set < Integer > mapKeysSet = kentuckyDerbyWinners.keySet();
+	Set < Integer > mapKeysSet = kentuckyDerbyWinners.keySet();
         
-    System.debug('Year Won: ' +mapKeysSet);
+    	System.debug('Year Won: ' +mapKeysSet);
 
-		// 2. Bonus!  Check out the documentation on Maps. Go to the section titled Map Methods.  Manipulate the Map using one of the methods defined in the documentation
-		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_map.htm
-		// Hint: Can you remove an entry using the key? 
-		// Yes. remove(key) 
-		// Can you clear out the map without deleting it?
-		// Yes. clear()
+	// 2. Bonus!  Check out the documentation on Maps. Go to the section titled Map Methods.  Manipulate the Map using one of the methods defined in the documentation
+	// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_map.htm
+	// Hint: Can you remove an entry using the key? 
+	// Yes. remove(key) 
+	// Can you clear out the map without deleting it?
+	// Yes. clear()
 
-    String removeYear = kentuckyDerbyWinners.remove(1973);
-		String result2 = kentuckyDerbyWinners.get(1973);
-    System.assertEquals(null, result2);
+    	String removeYear = kentuckyDerbyWinners.remove(1973);
+	String result2 = kentuckyDerbyWinners.get(1973);
+    	System.assertEquals(null, result2);
         
-    System.debug('This is the result from 1973: '+result2);
+    	System.debug('This is the result from 1973: '+result2);
 
-	}
+     }
 
-	public static void listsReview() {
+     public static void listsReview() {
 
-		// 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
+	// 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
 
-		List <String> horseColors = new List <String>{'Grey','Paint','Chestnut','Roan','Palomino','Black'};
+	List <String> horseColors = new List <String>{'Grey','Paint','Chestnut','Roan','Palomino','Black'};
             
-		// 2. Create a second list of Strings and add 5 or more entries to this list.
+	// 2. Create a second list of Strings and add 5 or more entries to this list.
 
-		List <String> horseMarkings = new List <String>();
+	List <String> horseMarkings = new List <String>();
         
-    horseMarkings.add('Snip');
-    horseMarkings.add('Star');
-    horseMarkings.add('Blaze');
-    horseMarkings.add('Strip');
-    horseMarkings.add('Sock');
-    horseMarkings.add('Stocking');
+    	horseMarkings.add('Snip');
+    	horseMarkings.add('Star');
+    	horseMarkings.add('Blaze');
+    	horseMarkings.add('Strip');
+    	horseMarkings.add('Sock');
+    	horseMarkings.add('Stocking');
 
-    //3.  Bonus! Using the documentation on standard List methods from Salesforce, add the items from your first list, to your second list with one command
-		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_list.htm
+    	//3.  Bonus! Using the documentation on standard List methods from Salesforce, add the items from your first list, to your second list with one command
+	// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_list.htm
 
-		horseColors.addAll(horseMarkings);
+	horseColors.addAll(horseMarkings);
         
-    System.debug('Combined list: ' +horseColors);
+    	System.debug('Combined list: ' +horseColors);
         
-		//4.  Can you now loop through your combined list and print it to the debug log?  (Hint:  Check the documentation!)
+	//4.  Can you now loop through your combined list and print it to the debug log?  (Hint:  Check the documentation!)
 
- 		integer counter = 0;
-    While (counter < horseColors.size()) {
-    System.debug('List of items from combined list: ' +horseColors[counter]);
-    counter++;
-    }
+ 	integer counter = 0;
+    	While (counter < horseColors.size()) {
+    	System.debug('List of items from combined list: ' +horseColors[counter]);
+    	counter++;
+     }
     
 }
 
