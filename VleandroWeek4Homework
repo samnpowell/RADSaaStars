@@ -1,5 +1,4 @@
 public with sharing class WeekFourHomework {
-	
 
 	public static void setsReview(){
 
@@ -7,15 +6,15 @@ public with sharing class WeekFourHomework {
 
 		// 1.  Create a set of Strings and add at least 5 entries       
 
-        Set <String> herbs = new Set<String>{'Parsley', 'Sage', 'Rosemary', 'Thyme', 'Lavender'};
+        	Set <String> herbs = new Set<String>{'Parsley', 'Sage', 'Rosemary', 'Thyme', 'Lavender'};
             
 		//Use system.debug to print out the size of your set
 
-        system.debug('Size of herbs: ' + herbs.size()); 
+        	system.debug('Size of herbs: ' + herbs.size()); 
 
 		//Add an item to your set that already exists
 
-        herbs.add('Lavender');
+        	herbs.add('Lavender');
 
 		//Use system.debug to print out the size again,  they should be the same!
 
@@ -25,23 +24,23 @@ public with sharing class WeekFourHomework {
 		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_set.htm
 		//Hint:  can you print out if the set is empty?  Can you clone it?
 
-        //Clone the Set herbs to a string Set called moreHerbs.
-        Set <String> moreHerbs = herbs.clone();
+        	//Clone the Set herbs to a string Set called moreHerbs.
+        	Set <String> moreHerbs = herbs.clone();
         
-        //Add a new herb to the list.
-        moreHerbs.add('Basil');
+        	//Add a new herb to the list.
+        	moreHerbs.add('Basil');
         
-        //Debug to get the size of moreHerbs.
-        system.debug('Size of moreHerbs: ' + moreHerbs.size());
+        	//Debug to get the size of moreHerbs.
+        	system.debug('Size of moreHerbs: ' + moreHerbs.size());
         
-        //Debug to get the contents of moreHerbs.
-        system.debug('Contents of moreHerbs: ' + moreHerbs);
+        	//Debug to get the contents of moreHerbs.
+        	system.debug('Contents of moreHerbs: ' + moreHerbs);
         
-        //Clear all the values in the Set called herbs.
-        herbs.clear();
+        	//Clear all the values in the Set called herbs.
+        	herbs.clear();
         
-        //Debug to print out the values in herbs.  Prints an empty set.
-        system.debug('Contents of herbs: ' + herbs);
+        	//Debug to print out the values in herbs.  Prints an empty set.
+        	system.debug('Contents of herbs: ' + herbs);
 
 	}
 
@@ -52,66 +51,66 @@ public with sharing class WeekFourHomework {
 		// 1. Create a new Map.  You can use whatever primitives/object types you like, as long as they make sense.
 		// Try to add at least 5 Key/value pairs.
 		
-        //Create a Map with two strings.
-        Map<Id, String> acctMap = new Map<Id, String>();
+        	//Create a Map with two strings.
+        	Map<Id, String> acctMap = new Map<Id, String>();
         
-        //Create a List that contains the ID and Name of the top 5 annual revenue accounts.
-        List<Account> acctList = [SELECT Id, Name
-                                   FROM Account
-                                   WHERE AnnualRevenue != NULL AND AnnualRevenue != 0 
-                                   ORDER BY AnnualRevenue
-                                   DESC
-                                   LIMIT 5];
+        	//Create a List that contains the ID and Name of the top 5 annual revenue accounts.
+        	List<Account> acctList = [SELECT Id, Name
+                	                  FROM Account
+                        	          WHERE AnnualRevenue != NULL AND AnnualRevenue != 0 
+                                   	  ORDER BY AnnualRevenue
+                                   	  DESC
+                                   	  LIMIT 5];
         
-        //Debug
-        system.debug('Contents of acctList: ' + acctList);
+        	//Debug
+        	system.debug('Contents of acctList: ' + acctList);
         
-        //Instantiate the acctList as acc and then use the List to "put" the ID and Name of Account into the Map.
-        for(Account acc : acctList){
-            acctMap.put(acc.Id, acc.Name);
-        }
+        	//Instantiate the acctList as acc and then use the List to "put" the ID and Name of Account into the Map.
+        	for(Account acc : acctList){
+            		acctMap.put(acc.Id, acc.Name);
+        	}
         
 		//Debug
-        system.debug('Contents of acctMap: ' + acctMap);
+        	system.debug('Contents of acctMap: ' + acctMap);
         
-        //Now, in the debug log, print out  a list of the values.
+        	//Now, in the debug log, print out  a list of the values.
 		List<String> acctValuesList = acctMap.values();
-        system.debug('Values of acctMap: ' + acctValuesList);
+        	system.debug('Values of acctMap: ' + acctValuesList);
         
 		//Can you print out a set of the Keys?
-        Set <Id> acctKeySet = acctMap.keySet();
-        system.debug('Keys of acctMap: ' + acctKeySet);
+        	Set <Id> acctKeySet = acctMap.keySet();
+        	system.debug('Keys of acctMap: ' + acctKeySet);
               
 
 		// 2. Bonus!  Check out the documentation on Maps. Go to the section titled Map Methods.  Manipulate the Map using one of the methods defined in the documentation
 		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_map.htm
 		// Hint: Can you remove an entry using the key?  Can you clear out the map without deleting it?
 		
-       	//Remove an entry using the key
-        //For each ID in the KeySet
-        for(Id id: acctMap.keySet()){
+       		//Remove an entry using the key
+        	//For each ID in the KeySet
+        	for(Id id: acctMap.keySet()){
 
-			//Check and see if the Value returned for a given key is a specific Account.  If it is then we'll remove it.
-            if(acctMap.get(id) == '2_Express Logistics and Transport'){
+		//Check and see if the Value returned for a given key is a specific Account.  If it is then we'll remove it.
+            	if(acctMap.get(id) == '2_Express Logistics and Transport'){
 
-			    //Declare a string and remove the given ID/Value
-                String remAcct = acctMap.remove(id);
+			//Declare a string and remove the given ID/Value
+                	String remAcct = acctMap.remove(id);
                 
-                //Declare a string with the result that we can check against later.
-                String result = acctMap.get(id);
-                system.debug(result);
+                	//Declare a string with the result that we can check against later.
+                	String result = acctMap.get(id);
+                	system.debug(result);
                 
-                //Check to see if we get a null value for the string result.
-                System.assertEquals(null, result);
+                	//Check to see if we get a null value for the string result.
+                	System.assertEquals(null, result);
             	
-                //Declare an Integer and get the current Map size.
-                Integer mSize = acctMap.size();
-                system.debug(mSize);
+                	//Declare an Integer and get the current Map size.
+                	Integer mSize = acctMap.size();
+                	system.debug(mSize);
                 
-            	//Check to see if we have reduced the size of the map.
-            	System.assertEquals(4, mSize);
+            		//Check to see if we have reduced the size of the map.
+            		System.assertEquals(4, mSize);
                 
-            }
+            	}
 	
         }
         
@@ -126,24 +125,25 @@ public with sharing class WeekFourHomework {
         System.assertEquals(0, mSizeTwo);
         
 	}
+    	
     	public static void listsReview() {
 
 		// 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
-        List <String> pets = new List <String>{'Cats', 'Dogs', 'Hamsters', 'Hedgehogs', 'Bunnies'};
-        system.debug('Pets: ' + pets);
+        	List <String> pets = new List <String>{'Cats', 'Dogs', 'Hamsters', 'Hedgehogs', 'Bunnies'};
+        	system.debug('Pets: ' + pets);
 
 		// 2. Create a second list of Strings and add 5 or more entries to this list.
-        List <String> petActivities = new List <String> {'Sleep', 'Fetch', 'Run the Wheel', 'Nothing', 'Hop'};
+        	List <String> petActivities = new List <String> {'Sleep', 'Fetch', 'Run the Wheel', 'Nothing', 'Hop'};
 		system.debug('Pet Activities: ' + petActivities);        
 
 		//3.  Bonus! Using the documentation on standard List methods from Salesforce, add the items from your first list, to your second list with one command
 		// Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_list.htm
 		pets.addAll(petActivities);
-        system.debug('Contents of Pets List: ' + pets);
+        	system.debug('Contents of Pets List: ' + pets);
 
 		//4.  Can you now loop through your combined list and print it to the debug log?  (Hint:  Check the documentation!)
-            for (String p : pets) {
-                system.debug(p);
-            }
+            	for (String p : pets) {
+                	system.debug(p);
+            	}
 	}
 }
