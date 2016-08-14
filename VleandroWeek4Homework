@@ -88,24 +88,29 @@ public with sharing class WeekFourHomework {
 		
        		//Remove an entry using the key
         	//For each ID in the KeySet
-        	for(Id id: acctMap.keySet()){
+        	for(Id id: acctMap.keySet())
+        	
+        	/* LIST <id> keyID =new List <id>();
 
-		//Check and see if the Value returned for a given key is a specific Account.  If it is then we'll remove it.
-            	if(acctMap.get(id) == '2_Express Logistics and Transport'){
+          for(Id ids: acctMap.keySet()){
 
+            if(acctMap.get(ids) == '0_0_0_Jen0'){
+
+                   keyID.add(ids);
+                   System.debug(keyID);
 			//Declare a string and remove the given ID/Value
-                	String remAcct = acctMap.remove(id);
+                	String remAcct = acctMap.remove(ids);
                 
                 	//Declare a string with the result that we can check against later.
-                	String result = acctMap.get(id);
-                	system.debug(result);
+                	String result = acctMap.get(ids);
+                	system.debug('result now that I removed  =' + result);
                 
                 	//Check to see if we get a null value for the string result.
                 	System.assertEquals(null, result);
             	
                 	//Declare an Integer and get the current Map size.
                 	Integer mSize = acctMap.size();
-                	system.debug(mSize);
+                	system.debug('Should be 4 left in accMap, ' + mSize);
                 
             		//Check to see if we have reduced the size of the map.
             		System.assertEquals(4, mSize);
@@ -113,6 +118,7 @@ public with sharing class WeekFourHomework {
             	}
 	
         }
+*/
         
        	//clear out the map without deleting it
         acctMap.clear();
