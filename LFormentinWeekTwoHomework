@@ -2,7 +2,7 @@ public with sharing class WeekTwoHomework {
 	
 
 	public static void homeworkAssignmentMethod () {
-		//Read through the set-up below and then complete the code following the prompts.  When you're done, make sure to compile (save) your work
+		//Read through the set-up below and then complete the code following  the prompts.  When you're done, make sure to compile (save) your work
 		//Open Execute Anonymous in the Developer Console and execute your code by typing in: WeekTwoHomework.homeworkAssignmentMethod();
 		//Read through the debug statements to make sure you're done your work correctly.
 		
