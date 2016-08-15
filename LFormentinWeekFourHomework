@@ -45,8 +45,40 @@ public with sharing class WeekFourHomework {
 
 
 	}
+	
+	// Proposed listsReveiw changes
+	
+	  public static void listsReview() {
+        
+        // 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
+        List < String > bestCoffeeJoints = new List < String > { 'Matchstick', 'Musette', 'Dog & Squirrel', 'Elysian', 'Greenhorn' };
+            system.debug('Coffee List size before join: ' + bestCoffeeJoints.size());
+        system.debug('Coffee List before join: ' + bestCoffeeJoints);
+        
+        // 2. Create a second list of Strings and add 5 or more entries to this list.
+        List < String > bestFoodSpots = new List < String > {'Pho Goodness', 'Nosh', 'Hungry Guys', 'Nook', 'Bella Gelato' };
+            system.debug('Food List size before join: ' + bestFoodSpots.size());
+        
+        //3.  Bonus! Using the documentation on standard List methods from Salesforce, add the items from your first list, to your second list with one command
+        // Documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_list.htm
+        bestCoffeeJoints.addAll(bestFoodSpots);
+        
+        //bestCoffeeJoints (you were printing the bestFoodSpots in the debug so it wasnt showing the combined list!!)
+        system.debug('Combined food and coffee list: ' + bestCoffeeJoints);
+        system.debug('Combined food and coffee list Size should be 10, and is : ' + bestCoffeeJoints.size());
+        
+        //4.  Can you now loop through your combined list and print it to the debug log?  (Hint:  Check the documentation!)
+        
+        //need to iterate through this list- List methods do not include 'contains'- Sets have contains method and Maps have containskey
+        for (String s: bestFoodSpots){
+            if (s == 'Nosh') {
+                System.debug (' bestFoodSpots contains Nosh and has size ' + bestFoodSpots.size());
+            }
+        }
+        
+    }
 
-	public static void listsReview() {
+/*	public static void listsReview() {
 
 		// 1. Create a list of Strings.  Add at least 5 entries to the list, all in one line
         List < String > bestCoffeeJoints = new List < String > { 'Matchstick', 'Musette', 'Dog & Squirrel', 'Elysian', 'Greenhorn' };
@@ -67,6 +99,6 @@ public with sharing class WeekFourHomework {
 		}
 	}
 
-
+*/
 
 }
