@@ -19,7 +19,7 @@ public with sharing class WeekFourHomework {
 		//Perhaps we're creating a list of cuisines and it's possible we'll encounter the same one twice, but we don't want it to appear twice
               
 		//Use system.debug to print out the size of your set
-		system.debug('Size of MA College Set: ' + maColleges.size());
+		system.debug('Size of MA College Set Should be x: ' + maColleges.size());
 
 		//Add an item to your set that already exists
 		maColleges.add('Boston University');
