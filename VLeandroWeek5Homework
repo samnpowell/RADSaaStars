@@ -5,32 +5,32 @@ public with sharing class WeekFiveHomework {
 		//1. Below is a SOQL query that should be returning the top 5 Accounts in our org based on Annual Revenue.  
 		//Something's not quite right, can you fix the query?
 		//VEL: Needed to exlude where AnnualRevenue is null, then order by AnnualReview in descending order and limit to 5.
-        List < Account > topFiveAccounts = [SELECT ID, Name, AnnualRevenue 
-                                            FROM Account 
-                                            WHERE AnnualRevenue !=0 and AnnualRevenue != NULL
-                                            ORDER BY AnnualRevenue 
-                                            DESC
-                                           	LIMIT 5];
+        	List < Account > topFiveAccounts = [SELECT ID, Name, AnnualRevenue 
+                	                            FROM Account 
+                        	                    WHERE AnnualRevenue !=0 and AnnualRevenue != NULL
+                                	            ORDER BY AnnualRevenue 
+                                        	    DESC
+                                           	    LIMIT 5];
 
 		system.debug('This should be 5: '+topFiveAccounts.size());
         
-        //Debug: View top 5 accounts. By doing this I was able to identify the need for AnnualRevnue != NULL.
-        system.debug('Top 5 Accounts: ' + topFiveAccounts);
-        for(Account a : topFiveAccounts){
-            system.debug('Top 5 Account: ' + a.Name);
-        }
+        	//Debug: View top 5 accounts. By doing this I was able to identify the need for AnnualRevnue != NULL.
+        	system.debug('Top 5 Accounts: ' + topFiveAccounts);
+        	for(Account a : topFiveAccounts){
+            		system.debug('Top 5 Account: ' + a.Name);
+	        }
 
 
 		//2. Here is a query that is missing something.  It compiles, but if you try and run this method in Anonymous
 		//you'll get an error when the method tries to use the query results.  Fix it! :)
 
 		//VEL: Needed to add Last Name.
-        List < Contact > contacts = [SELECT FirstName, LastName, MailingState FROM Contact LIMIT 10];
+        	List < Contact > contacts = [SELECT FirstName, LastName, MailingState FROM Contact LIMIT 10];
 
 		for (Contact c: contacts) {
 			String name = c.FirstName + ' ' + c.LastName;
-            //Added debug to see and verify that we were indeed getting first and last name.
-            system.debug('Print Name: ' + name);
+            		//Added debug to see and verify that we were indeed getting first and last name.
+            		system.debug('Print Name: ' + name);
 		}
         
        
@@ -39,34 +39,32 @@ public with sharing class WeekFiveHomework {
 		//3.  Can you write a SOQL query from scratch that will return the top 10 Accounts in the org, ordered by annual
 		//revenue in decending order?  Print your results in the debug log.
 		//Query for top ten acccounts based on annual revenue and feed into a list called topTenAccounts.
-        List <Account> topTenAccounts = [SELECT ID, Name, AnnualRevenue
-                                         FROM Account
-                                         WHERE AnnualRevenue != NULL and AnnualRevenue != 0
-                                         ORDER BY AnnualRevenue
-                                         DESC
-                                         LIMIT 10];
+        	List <Account> topTenAccounts = [SELECT ID, Name, AnnualRevenue
+                	                         FROM Account
+                        	                 WHERE AnnualRevenue != NULL and AnnualRevenue != 0
+                                	         ORDER BY AnnualRevenue
+                                        	 DESC
+                                         	 LIMIT 10];
 
 		//Print size of topTenAccounts. 
-        system.debug('Size of List is: ' + topTenAccounts.size());   
+        	system.debug('Size of List is: ' + topTenAccounts.size());   
         
-        //Lets print the details of each account.
-        for(Account a: topTenAccounts){
-            system.debug('The Account Name is ' + a.Name + ' and their Annual Revenue is ' + a.AnnualRevenue + '.');
-        }
+        	//Lets print the details of each account.
+        	for(Account a: topTenAccounts){
+            		system.debug('The Account Name is ' + a.Name + ' and their Annual Revenue is ' + a.AnnualRevenue + '.');
+        	}
         
-
-
 		//4.  Can you write a SOQL query that will return all opportunities for all accounts in the topFiveAccounts list that we used
 		//in Number 1?  (topFiveAccounts) Hint:  If you're stuck, look back a the code in WeekFiveClassExercises, getOpenOppsForHotAccounts method
 		//  Print your results in the debug log.
 		
-        //List opportunities found in the topFiveAccounts list from earlier.
-        List <Opportunity> opps = [SELECT ID, Name, Amount, StageName FROM Opportunity WHERE isClosed = FALSE AND AccountId in :topFiveAccounts];
+	        //List opportunities found in the topFiveAccounts list from earlier.
+        	List <Opportunity> opps = [SELECT ID, Name, Amount, StageName FROM Opportunity WHERE isClosed = FALSE AND AccountId in :topFiveAccounts];
 		//Print out list of opportunities.
-        system.debug('Show opportunities: ' + opps);
-        for(Opportunity o : opps){
-            system.debug('The Opportunity Name is ' + o.Name + '.  It is ' + o.Amount + ' dollars and it is in Stage ' + o.StageName + '.');
-        }
+        	system.debug('Show opportunities: ' + opps);
+        	for(Opportunity o : opps){
+            		system.debug('The Opportunity Name is ' + o.Name + '.  It is ' + o.Amount + ' dollars and it is in Stage ' + o.StageName + '.');
+	        }
 	}
 
 	public static void forTheLoveOfForLoops () {
@@ -80,8 +78,8 @@ public with sharing class WeekFiveHomework {
 		//This loop should run 5 times
 		for (Integer i=0; i<5; i++) {
 			system.debug('i is now: '+i);
-            Integer run = i + 1;
-            system.debug('The loop has run ' + run + ' times.');
+		        Integer run = i + 1;
+            		system.debug('The loop has run ' + run + ' times.');
 		}
 
 
@@ -92,22 +90,17 @@ public with sharing class WeekFiveHomework {
 
 		List < Account > accountList = [SELECT ID, Name FROM Account LIMIT 5];
 
-        //Declare an integer and store the accountList size in that variable.
-        Integer acctSize = accountList.size();
+        	//Declare an integer and store the accountList size in that variable.
+        	Integer acctSize = accountList.size();
         
-        //Use acctSize variable to indicate the threshold for the loop.
-        for(Integer i=0; i<acctSize; i++) {
-            //This way you can use "i" as an index and get that records Account Name.
-            system.debug('Account Name is ' + accountList[i].Name);
-        }
+        	//Use acctSize variable to indicate the threshold for the loop.
+        	for(Integer i=0; i<acctSize; i++) {
+            		//This way you can use "i" as an index and get that records Account Name.
+            		system.debug('Account Name is ' + accountList[i].Name);
+        	}
             
 		//for (Account a: accountList) {
 		//	system.debug('Account Name: '+a.name);
 		//}
-
-
 	}
-
-
-
 }
