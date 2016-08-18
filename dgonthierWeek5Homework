@@ -1,0 +1,144 @@
+public with sharing class WeekFiveHomework {
+	
+	public static void soqlPractice () {
+
+		// 1. Below is a SOQL query that should be returning the top 5 Accounts in our org based on Annual Revenue.  
+		// Something's not quite right, can you fix the query?
+		// List < Account > topFiveAccounts = [SELECT ID, Name, AnnualRevenue FROM Account WHERE AnnualRevenue !=0];
+		// system.debug('This should be 5: '+topFiveAccounts.size());
+        
+        // To list top 5 accounts based on annual revenue you must SORT the results by AnnualRevenue in DESCENDING ORDER and 
+		// LIMIT the number of returned accounts to 5. Here is corrected SOQL query:
+
+		  List <Account> topFiveAccounts = [SELECT ID,Name,AnnualRevenue 
+			  FROM Account 
+			  WHERE AnnualRevenue != 0 
+			  ORDER BY AnnualRevenue DESC
+              NULLS LAST
+			  LIMIT 5];
+        
+            // Print size of list to debug log. Size should be 5.
+		    system.debug('This should be 5: '+topFiveAccounts.size());
+        
+            // Print the Top 5 Accounts
+		    system.debug('Top 5 Accounts: ' + topFiveAccounts);
+ 
+
+		// 2. Here is a query that is missing something.  It compiles, but if you try and run this method in Anonymous
+		// you'll get an error when the method tries to use the query results.  Fix it! :)
+
+		// Incorrect query
+		// List < Contact > contacts = [SELECT FirstName, MailingState FROM Contact LIMIT 10];
+
+		    // Corrected SOQL query; the SELECT statement must include all fields you will need. The incorrect query 
+		    // did not return the LastName field so it was not available to to the the FOR statement. The query 
+		    // has been corrected to return the LastName - and explicitly SELECT the ID field.
+		    List < Contact > contacts = [SELECT ID, FirstName, LastName, MailingState FROM Contact LIMIT 10];
+
+            // Print to the debug log to verify correct results. ID, FirstName, LastName and MailingState should
+            // be returned for a maximum of 10 Contact records.
+            system.debug('Number of Contact records returned: ' + contacts.size());
+		    system.debug('The Contact records returned: ' + contacts);       
+		
+            // Using the FirstName and LastName data returned by the query, create a string variable that holds
+            // each contact's full name and verify by printing to the debug log
+            for (Contact c: contacts) {
+		        String name = c.FirstName + ' ' + c.LastName;
+                system.debug('Contact Name: ' + name);
+	    	}
+
+
+		//3.  Can you write a SOQL query from scratch that will return the top 10 Accounts in the org, ordered by annual
+		//revenue in decending order?  Print your results in the debug log.
+		
+            // This FOR loop uses a SOQL query to populate a list with the org's top accounts based
+            // on Annual Revenue and in descending order by Annual Revenue. A maximum of 10 accounts 
+            // is returned.
+            for (List <Account> topTenAccounts : [SELECT ID,Name,AnnualRevenue 
+			    FROM Account 
+		    	WHERE AnnualRevenue != 0 
+			    ORDER BY AnnualRevenue DESC
+			    LIMIT 10]) {
+        	    // Print the number of Accounts returned; this should be a maximum of 10
+        	    system.debug('Number of Accounts returned: ' + topTenAccounts.size());  
+                                                
+       		    // Print the top Accounts including all fields returned by the query                                        
+    		    system.debug('Top 10 Accounts: ' + topTenAccounts);
+		    }
+        
+		//4.  Can you write a SOQL query that will return all opportunities for all accounts in the topFiveAccounts 
+		// list that we used in Number 1? (topFiveAccounts) Hint:  If you're stuck, look back a the code in 
+		// WeekFiveClassExercises, getOpenOppsForHotAccounts method. Print your results in the debug log.		
+
+        	// This SOQL query should return the Opportunity ID and Amount and Account Name for all opportunities related 
+      	    // to the accounts in the topFiveAccounts list populated by the first query in the soqlPractice method. The list
+      	    // is sorted by Account Name.
+        	List <Opportunity> top5AccountsOpps =
+        		[SELECT ID,Amount,Account.Name
+           		FROM Opportunity 
+            	WHERE AccountId in:topFiveAccounts
+                ORDER BY Account.Name
+                ];
+        
+        	// Print the size of the top5AccountsOpps list
+        	// Though the debug log may not list all results, the list size can be confirmed using Workbench
+        	system.debug('Size of returned list: ' + top5AccountsOpps.size());
+			
+        	// Print the contents of the list 
+        	system.debug('All Opportunities for our Top 5 Accounts: ' + top5AccountsOpps);
+        	// Despite requesting the query return the Account Name, only the Account ID prints to the debug log
+        	// when running this query in Developer Console. Account.Name is returned when running the query in
+        	// Workbench. Does the Dev Console handle SOQL queries differently than Workbench.
+        	// I've sent an email to the group with this question.
+    }
+
+	public static void forTheLoveOfForLoops () {
+
+		// 1. Take a look at the list and loop below.  It's commented out since it can't run as is. 
+		// Can you replace the ?? with the number that makes sense based on the comments?
+		// Remove the slashes and compile.
+		// Can you add an extra counter variable so that you can print out how many times the loop ran in total?
+
+
+		    // This loop should run 5 times. If Integer i begins at zero the ending condition must be Integer i < 5.
+		    for (Integer i=0; i<5; i++) {
+			
+			    // Print the value of Integer i during each iteration of loop. The values should be 0,1,2,3,4
+                system.debug('i is now: ' +i);
+        	
+                // To count the loops, set Integer i2 equal to i + 1; Print the value of i2 during each iteration of the loop.
+        	    // The values should be 1,2,3,4,5
+                Integer i2 = i +1;
+                system.debug('i2 is now: ' + i2);
+            
+                // Print the total times the loop ran; the value should 5
+       	 	    system.debug('The loop ran ' + i2 + ' time(s)');
+		    }
+        
+
+		//2. Below is a loop that iterates through a list.  Can you change it to use the new For Loop syntax?  It should 
+		// print out each account name in the debug log when you're done.
+		// Use the list size to tell you how many loops, and use indexing to fetch values.  If you need help, check the 
+		// loopingThroughLists method in WeekFiveClassExercises for hints
+		// Integer acctListSize = accountList.size();
+        // for (Account a: accountList) {
+        // system.debug('Account Name: '+a.name); }
+
+		    // SOQL query that retrieves the values of the ID and Name fields from of a maximum of 5 Accounts
+            List < Account > accountList = [SELECT ID, Name FROM Account LIMIT 5];
+
+            // Set loop counter to 0
+            Integer loopCount = 0;
+        
+            // For loop runs if loop counter is 0 and terminates when loop counter equals the size of the account list
+            // Use the size of the returned list to determine what loopCounter value will terminate the loop
+            for (loopCount = 0; loopCount < accountList.size(); loopCount++){
+            
+                // Print the name of the account returned each time you iterate through the loop
+                // The index (loopCount) should start at 0 and be incremented by one each time the loop is run so
+                // that the names of the accounts located at indexes 0 through 4 are printed.
+                system.debug('Name of Account at index ' + loopCount + ': ' + accountList[loopCount].Name);
+            }
+ 	}
+
+}
