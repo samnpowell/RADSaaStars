@@ -1,3 +1,4 @@
+//redimaggio@gmail.com
 public with sharing class WeekFourHomework {
 	
 
@@ -15,8 +16,11 @@ public with sharing class WeekFourHomework {
 		dogBreeds.add('Springer Spaniel');
 
 
-		//Use system.debug to print out the size of your set
+	
+	//Use system.debug to print out the size of your set
 		
+        system.debug('Size of dog Breeds Set Should be 5: ' + dogBreeds.size());
+	
         system.debug('Size of dog Breeds Set Should be x: ' + dogBreeds.size());
 
 		//Add an item to your set that already exists
