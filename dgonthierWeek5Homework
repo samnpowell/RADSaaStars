@@ -88,8 +88,22 @@ public with sharing class WeekFiveHomework {
         	// when running this query in Developer Console. Account.Name is returned when running the query in
         	// Workbench. Does the Dev Console handle SOQL queries differently than Workbench.
         	// I've sent an email to the group with this question.
-    	}
-
+        	
+        	//Good catch! Notice if you add account.phone in there also, still only accountID comes through on the debug log. 
+        	// I think this was especially tricky since accountID does sort of make sense as a substitute for account.name. 
+        	// But if you put in other account.fields it's clearer that only the accountID is returned in the 'condensed' debug statement.
+        	// More info in my email response, and in sum, here's a quick way to confirm in the debug log
+        	// that the query is pulling the desired fields:
+        	
+        List<opportunity> o = [SELECT ID, accountID,account.phone, amount, account.name FROM opportunity where amount >10000];
+	System.debug(o);
+		for (opportunity x: o){
+	        System.debug(x.account.name);
+                System.debug(x.amount);
+                System.debug(x.account.id);
+        
+                }
+        }
 	public static void forTheLoveOfForLoops () {
 
 	// 1. Take a look at the list and loop below.  It's commented out since it can't run as is. 
