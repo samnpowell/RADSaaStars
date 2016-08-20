@@ -98,9 +98,8 @@ public with sharing class WeekFiveHomework {
         List<opportunity> o = [SELECT ID, accountID,account.phone, amount, account.name FROM opportunity where amount >10000];
 	System.debug(o);
 		for (opportunity x: o){
-	        System.debug(x.account.name);
-                System.debug(x.amount);
-                System.debug(x.account.id);
+	        System.debug('Acc Name= ' = x.account.name + '$=  ' + x.amount + 'Accd=  ' + x.account.id);
+                
         
                 }
         }
