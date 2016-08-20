@@ -17,7 +17,7 @@ public with sharing class WeekFourHomework {
 
 
 	
-	//Use system.debug to print out the size of your set
+	//Use system.debug to print out the size of your set.
 		
         system.debug('Size of dog Breeds Set Should be 5: ' + dogBreeds.size());
 	
