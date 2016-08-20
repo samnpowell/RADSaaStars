@@ -21,7 +21,7 @@ public with sharing class WeekFiveHomework {
 		for (Contact c: contacts) {
 			String name = c.FirstName + ' ' + c.LastName;
 		}
-
+/
 
 		//3.  Can you write a SOQL query from scratch that will return the top 10 Accounts in the org, ordered by annual
 		//revenue in decending order?  Print your results in the debug log.
