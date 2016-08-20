@@ -65,7 +65,7 @@ public with sharing class WeekFiveHomework {
     		system.debug('Top 10 Accounts: ' + topTenAccounts);
 		}
         
-	//4.  Can you write a SOQL query that will return all opportunities for all accounts in the topFiveAccounts 
+	//4..  Can you write a SOQL query that will return all opportunities for all accounts in the topFiveAccounts 
 	// list that we used in Number 1? (topFiveAccounts) Hint:  If you're stuck, look back a the code in 
 	// WeekFiveClassExercises, getOpenOppsForHotAccounts method. Print your results in the debug log.		
 
