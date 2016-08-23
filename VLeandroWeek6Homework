@@ -34,9 +34,9 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
 		ID runningUserId = UserInfo.getUserId();
 
 		//Create a list to hold any new cases we may create.
-        List <Case> newCases = new List <Case>();
+        	List <Case> newCases = new List <Case>();
         
-        for (Account a: Trigger.new) {
+        	for (Account a: Trigger.new) {
 			Case c = new Case();
 			c.Status = 'New';
 			c.Origin = 'New Account'; //Make sure you've added this as a picklist value for this field
@@ -48,12 +48,12 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
 			User u = [SELECT ID, Email FROM User WHERE ID=:runningUserId];
 			c.Staff_Email_Address__c = u.Email;
 			newCases.add(c);
-            //Remove this line.  It'll cause problems because it's not bulkified.
-            //insert c;
+            		//Remove this line.  It'll cause problems because it's not bulkified.
+            		//insert c;
 		}
 		//Move the insert of the necessary cases outside the for loop.
-        insert newCases;
-    }
+        	insert newCases;
+    	}
     
     
 
