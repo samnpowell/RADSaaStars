@@ -58,6 +58,7 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
 		}
         	
         // Now, outside the FOR Loop, insert the new related Welcome cases
+        insert accts;
         insert cases;
 	}
 	
