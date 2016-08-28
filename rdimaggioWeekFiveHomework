@@ -12,7 +12,8 @@ public with sharing class WeekFiveHomework {
 		//2. Here is a query that is missing something.  It compiles, but if you try and run this method in Anonymous
 		//you'll get an error when the method tries to use the query results.  Fix it! :)
 
-		List < Contact > contacts = [SELECT FirstName, MailingState FROM Contact LIMIT 10];
+// Add LastName into SOQL Query, so it is available to use in the contacts list, to use in the loop
+		List < Contact > contacts = [SELECT LastName, FirstName, MailingState FROM Contact LIMIT 10];
 
 		for (Contact c: contacts) {
 			String name = c.FirstName + ' ' + c.LastName;
@@ -45,13 +46,14 @@ public with sharing class WeekFiveHomework {
 		//1. Take a look at the list and loop below.  It's commented out since it can't run as is. 
 		// Can you replace the ?? with the number that makes sense based on the comments?
 		// Remove the slashes and compile.
-		// Can you add an extra counter variable so that you can print out how many times the loop ran in total?
+		// ***Can you add an extra counter variable so that you can print out how many times the loop ran in total?
 
 
 		//This loop should run 5 times
         for (Integer i=0; i<5; i++) {
-            
-            system.debug('This loop has run: '+i);            
+            Integer counter = i;
+            system.debug('This loop has run: '+ counter); 
+            //system.debug('This loop has run: '+i);  
 
 		}
 
