@@ -1,4 +1,4 @@
-//Jennifer Lee Week 6 Homework
+//Jennifer Lee Week 6 Homework.
 
 
 //The first line of our trigger gives the Trigger's name (AccountTrigger), names the object (Account) and lists the trigger_events that will cause the code below to execute
