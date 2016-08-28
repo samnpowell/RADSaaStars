@@ -35,10 +35,10 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
         
 		//To bulkify the code, we use a list that will hold a collection of accounts and
 		//allow the trigger to act on the entire collection
-        List <Account> accts = new List <Account>{};
-            List <Case> cases = new List <Case>{};
+        	// Create a list variable (cases) to store the new Welcome cases created
+            	List <Case> cases = new List <Case>{};
         
-        //Loop through all records in the Trigger.new collection
+        	//Loop through all records in the Trigger.new collection
    		for(Account a: Trigger.new){
 			Case c = new Case();
 			c.Status = 'New';
@@ -50,16 +50,15 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
 			//Get the email address for the Account owner
 			User u = [SELECT ID, Email FROM User WHERE ID=:runningUserId];
 			c.Staff_Email_Address__c = u.Email;
+           
+            		// Add the new case (c) to the cases list.
+            		cases.add(c);
             
-            accts.add(a);
-            cases.add(c);
-            
-            // insert c; Instead of inserting a single case, we'll move the DML statement outside the FOR Loop    
+            		// insert c; Instead of inserting a single case, we'll move the DML statement outside the FOR Loop    
 		}
         	
-        // Now, outside the FOR Loop, insert the new related Welcome cases
-        insert accts;
-        insert cases;
+        	// Now, outside the FOR Loop, insert the new Welcome cases
+        	insert cases;
 	}
 	
 	else if(Trigger.isUpdate && Trigger.isBefore){
