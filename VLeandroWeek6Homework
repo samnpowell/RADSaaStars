@@ -6,7 +6,7 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
 	
 	//Each section of code below handles a different event & timing combination.  For now, we are demonstrating a trigger that has all of the logic right here.
 	//Later on we'll be looking at other ways of handling Trigger events using handler classes, but for now, we want to keep all the logic in once place as 
-	//we're learning.
+	//we're learning..
 
 
 	//Before an account record is inserted, we want to classify them according to estimated annual sales
