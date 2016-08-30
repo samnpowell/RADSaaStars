@@ -14,67 +14,67 @@ public with sharing class WeekSevenHomework {
 
 	public static void createSampleAccounts (Decimal numberOfAccounts) {
 
-	  //Create a list to hold the new accounts
-    List < Account > acctList = new List < Account >();
+		//Create a list to hold the new accounts
+    	  	List < Account > acctList = new List < Account >();
         
-    //Start the count at 1 since the first account is supposed to be 'Sample Account 1'.    
-    //As long as the count (i) is less than the numberOfAccounts  passed into the method then run through the for loop.  
-		for (Integer i = 1; i <= NumberOfAccounts; i++) {
-          
-      //Instantiate a new account
+    	  	//Start the count at 1 since the first account is supposed to be 'Sample Account 1'.    
+    	  	//As long as the count (i) is less than the numberOfAccounts  passed into the method then run through the for loop.  
+	  	for (Integer i = 1; i <= NumberOfAccounts; i++) {
+          	
+          		//Instantiate a new account
 			Account a = new Account();
 			
 			//Set the new Account Name to be 'Sample Account' and the value of the i counter
-      a.Name = 'Sample Account ' + i;
+      			a.Name = 'Sample Account ' + i;
 			
 			//Add the Account to the instantiated List
-      acctList.add(a);
+      			acctList.add(a);
       
-      //Print the current value of i
-      system.debug('Current value of ' + i);
+      			//Print the current value of i
+      			system.debug('Current value of ' + i);
       
-      //Print the account name
-      system.debug('Name of account: ' + a.Name);
-		}
+      			//Print the account name
+      			system.debug('Name of account: ' + a.Name);
+	  	}
 
-		//Create the accounts
-    insert acctList;
+	  	//Create the accounts
+    	  	insert acctList;
 
-		//Create a list to hold the cases we'll create.
-    List < Case > casesToInsert = new List < Case >();
+	  	//Create a list to hold the cases we'll create.
+   	  	List < Case > casesToInsert = new List < Case >();
 
-		//Loop through the Account List and for each account, we'll create a case.  Correct the list name.  Previously accctList
-    for (Account a: acctList) {
+	  	//Loop through the Account List and for each account, we'll create a case.  Correct the list name.  Previously accctList
+    	  	for (Account a: acctList) {
 		  
-		  //Instantiate a new case
-      Case c = new Case();
+	  		//Instantiate a new case
+      			Case c = new Case();
 			
 			//Set the status of the new case to New.  New was in double quotes.  Changed to single quotes.
-      c.Status = 'New';
+      			c.Status = 'New';
 			
 			//Set the origin of the new case to New Account.  Added a semi-colon at the end of the line.
-      c.Origin = 'New Account';
+      			c.Origin = 'New Account';
 			
 			//Set the Account ID field to the ID of the Account from the Account List.  This should associate the case with the given account.  Added the id field to a.
-      c.AccountId = a.id;
+      			c.AccountId = a.id;
 			
 			//Set the subject of the case by stating this is a new case for the given account.  Utilize the account name from the account list.
-      c.Subject = 'New Case for Account ' + a.Name;
+      			c.Subject = 'New Case for Account ' + a.Name;
 			
 			//Set the description.  Description was misspelled and instead of doing an assignment ( = ) it was set to do an equal statement (==)
-      c.Description = 'Follow Up';
+      			c.Description = 'Follow Up';
       
-      //Verify the record we're about to insert
-      system.debug('Insert Case: ' + c);
+      			//Verify the record we're about to insert
+      			system.debug('Insert Case: ' + c);
 			
 			//Add the case to the casesToInsert list
-      casesToInsert.add(c);
+      			casesToInsert.add(c);
 
-		}
+	  	}
         
-    //Create the cases
-    insert casesToInsert;
+    	  	//Create the cases
+    	  	insert casesToInsert;
 
-	}
+ 	}
 
 }
