@@ -1,0 +1,62 @@
+//Cindy's Week Seven Homework
+
+public with sharing class WeekSevenHomework {
+	
+	//Assignment:  The following method is supposed to create the number of accounts specified in the argument that it takes.
+	//Each Account should be named 'Sample Account #sampleNumber'  where sample number is the count.  So if you created 2 Accounts
+	//one would be called 'Sample Account 1' and the other 'Sample Account 2'
+
+	//Also, when we're done inserting them, we will create a case for each one with a Status of 'New', Origin of 'New Account' and the
+	//desription and subject of your choice.  
+
+	//This isn't working quite right.  Can you use your debugging skills to fix it?  I had to comment it out since it won't compile
+	//Look out for consistency and formatting too!  (even if they don't break the code)
+	//Add comments to describe what the code is doing.
+	//After you get it to compile, run it in execute anonymous and check that it's really working!  Look up your new accounts in your org!
+
+  //Create a method that will take an integer as input
+	public static void createSampleAccounts (Integer numberOfAccounts) {
+
+    //Create a list to hold the Accounts to be created
+		List < Account > acctList = new List < Account >();
+        
+    //Loop through creating an account, using the integer that was passed into the method
+    //Set the initial integer value to 1, since you want the numbering for the accounts to begin with 1 instead of 0
+		for (Integer i = 1; i <= numberOfAccounts; i++) {
+			Account a = new Account();
+      //Set the name for the Account to be 'Sample Account' plus the integer value
+			a.Name = ('Sample Account ' +i);
+      //Print out the name of the account to the debug log
+      System.debug(a.Name);
+      //Add the account name to the list to be inserted
+      acctList.add(a);
+		}
+
+    //Insert the records created in acctList
+		insert acctList;
+
+
+    //Create a list to hold the Cases to be created
+    List < Case > casesToInsert = new List < Case >();
+
+		//Create a for loop to create the cases from the acctList created above
+    for (Account a: acctList) {
+      //Create the new case 
+			Case c = new Case();
+			c.Status = 'New';
+			c.Origin = 'New Account';
+			c.AccountId = a.Id;
+			c.Subject = 'New Account Follow-up';
+			c.Description = 'Follow Up with New Account';
+      //Add the case to the list for insertion
+      casesToInsert.add(c);
+      //Print out the Account Name and Case Subject to the debug log
+      System.debug('Account Name: ' +a.Name +' Case Subject: ' +c.Subject);
+		}
+        
+		//Insert the records
+        insert casesToInsert;
+
+	}
+
+}
