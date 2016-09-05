@@ -1,0 +1,60 @@
+public with sharing class WeekSevenHomework {
+    
+  //TO FULFILL THIS ASSIGNMENT CORRECTLY YOU MUST DEACTIVATE THE NEW ACCOUNT TRIGGER CREATED DURING WEEK 6 IF 
+  //IT EXISTS IN YOUR ORGANIZATION. IF YOU DO NOT TWO NEW CASES ARE CREATED FOR EACH NEW ACCOUNT - ONE BY THE TRIGGER AND
+  //ONE BY THE createSampleAccounts METHOD IN THIS CLASS!!
+	
+	//Assignment:  The following method is supposed to create the number of accounts specified in the argument that it takes.
+	//Each Account should be named 'Sample Account #sampleNumber'  where sample number is the count.  So if you created 2 Accounts
+	//one would be called 'Sample Account 1' and the other 'Sample Account 2'
+
+	//Also, when we're done inserting them, we will create a case for each one with a Status of 'New', Origin of 'New Account' and the
+	//desription and subject of your choice.  
+
+	//This isn't working quite right.  Can you use your debugging skills to fix it?  I had to comment it out since it won't compile
+	//Look out for consistency and formatting too!  (even if they don't break the code)
+	//Add comments to describe what the code is doing.
+	//After you get it to compile, run it in execute anonymous and check that it's really working!  Look up your new accounts in your org!
+
+	public static void createSampleAccounts (Decimal numberOfAccounts) {
+	
+	      // Create a list of type Account to hold new Accounts before insert
+        List <Account> acctList = new List <Account>();
+		
+        // This FOR loop creates the number of new Accounts specified by the integer (numberOfAccounts) passed to
+        // the createSampleAccounts method. Each new Account is added to the acctList and is named "Sample Account i+1" 
+        // where i is the record index in the acctList. A system.debug statement is included to verify that the 
+        // Account Names are created correctly.
+        for (Integer i = 0; i < numberOfAccounts; i++) {
+            Account a = new Account();
+            a.Name = 'Sample Account ' + (i + 1);
+            acctList.add(a);
+            system.debug('New Account Name: ' + a.Name);
+        }
+        
+        // Outside the FOR loop insert the new Accounts in the acctList list
+        insert acctList;
+
+        // Create a list of type Case to hold new Cases related to each of the new Accounts (created above)
+        // to hold the Cases before each is inserted in the database
+        List <Case> casesToInsert = new List <Case>();
+		
+        // This FOR loop creates a new Case for each new Account created above and inserts the new Case into the
+        // casesToInsert list. Each new Case includes the following data: Name, Status, Origin, Subject, Description,
+        // and the Id of the Account to which it is related. A system.debug statement is included to verify that
+        // each Case is created.
+        for (Account a: acctList) {
+            Case c = new Case();
+            c.Status = 'New';
+            c.Origin = 'New Account';
+            c.AccountId = a.id;
+            c.Subject = a.name + ' - Please Welcome';
+            c.Description = 'Please send Welcome package';
+            casesToInsert.add(c);
+            system.debug('New Case: ' + c.Subject);
+        }
+        
+        // Outside the FOR loop, insert the newly-created Cases
+        insert casesToInsert;
+	}
+}
