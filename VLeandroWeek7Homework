@@ -1,5 +1,5 @@
 public with sharing class WeekSevenHomework {
-	
+	// RUNS GREAT & NICE COMMENTING. Well done!
 	//Assignment:  The following method is supposed to create the number of accounts specified in the argument that it takes.
 	//Each Account should be named 'Sample Account #sampleNumber'  where sample number is the count.  So if you created 2 Accounts
 	//one would be called 'Sample Account 1' and the other 'Sample Account 2'
