@@ -3,6 +3,8 @@ public with sharing class WeekSevenHomework {
   //TO FULFILL THIS ASSIGNMENT CORRECTLY YOU MUST DEACTIVATE THE NEW ACCOUNT TRIGGER CREATED DURING WEEK 6 IF 
   //IT EXISTS IN YOUR ORGANIZATION. IF YOU DO NOT TWO NEW CASES ARE CREATED FOR EACH NEW ACCOUNT - ONE BY THE TRIGGER AND
   //ONE BY THE createSampleAccounts METHOD IN THIS CLASS!!
+  
+  //GOOD CATCH!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	//Assignment:  The following method is supposed to create the number of accounts specified in the argument that it takes.
 	//Each Account should be named 'Sample Account #sampleNumber'  where sample number is the count.  So if you created 2 Accounts
@@ -44,6 +46,7 @@ public with sharing class WeekSevenHomework {
         // and the Id of the Account to which it is related. A system.debug statement is included to verify that
         // each Case is created.
         for (Account a: acctList) {
+            //
             Case c = new Case();
             c.Status = 'New';
             c.Origin = 'New Account';
