@@ -1,0 +1,63 @@
+trigger AccountTrigger on Account (before insert, before update, before delete, after insert, after update, after delete, after undelete) {
+	
+	//Each section of code below handles a different event & timing combination.  For now, we are demonstrating a trigger that has all of the logic right here.
+	//Later on we'll be looking at other ways of handling Trigger events using handler classes, but for now, we want to keep all the logic in once place as 
+	//we're learning.
+
+
+	//Before an account record is inserted, we want to classify them according to estimated annual sales
+	if(Trigger.isInsert && Trigger.isBefore){
+
+		for (Account a: Trigger.new) {
+			if (a.Est_Annual_Sales__c >= 5000000) {
+				a.Priority__c = 'Highest';
+			} else if (a.Est_Annual_Sales__c >= 3000000) {
+				a.Priority__c = 'High';
+			} else if (a.Est_Annual_Sales__c >= 1000000) {
+				a.Priority__c = 'Standard';
+			} else {
+				a.Priority__c = 'Low';
+			}
+		}
+		//No DML needed here, since it's a BEFORE insert trigger
+	}
+
+	//After an Account is inserted, we want to create a case that prompts a user to send out a welcome package.
+	//We also need to pull the email from the account owner's user record and put it on the case record 
+	//(hint, the account owner will be the running user, in this use case, and our code has already fetched that id for us below:
+	else if(Trigger.isInsert && Trigger.isAfter){
+		//Week 6 Homework:  Properly bulkify this code:
+		ID runningUserId = UserInfo.getUserId();
+
+        // Usually, make lists to hold a bunch of 'stuff', then do stuff with that list of stuff, then insert that list of stuff
+        // So I'll try that for all the accounts that could be inserted at once
+        // Commented out the line below because I didn't end up doing anything with the list of accounts so probably don't need them
+        // List < Account > listOfAccounts = new List < Account > ();
+        
+        // There could also be bulk cases inserted so make a list to handle that
+        List < Case > listOfCases = new List < Case > ();
+        
+        // Then loop through all the records in the Trigger.new collection
+        
+		for (Account a: Trigger.new) {
+			Case c = new Case();
+			c.Status = 'New';
+			c.Origin = 'New Account'; //Make sure you've added this as a picklist value for this field
+			c.Subject = 'Send Welcome Package';
+			c.AccountId = a.id;
+			c.Description = 'Please follow up with this new Account and send them a Welcome Package.';
+			
+			//Get the email address for the Account owner
+			User u = [SELECT ID, Email FROM User WHERE ID=:runningUserId];
+			c.Staff_Email_Address__c = u.Email;
+            
+            // DML statements should be outside the loop. Comment that out:
+			// insert c;
+			
+            // Would I need to add each case record in the for loop to the list I declared? 
+            // Refer to other homework solutions: A = yes. I need to add each case record it finds to the list. 
+            listOfCases.add(c);
+		}
+        // insert the listOfCases list. #bulkification because it's only inserting ONE thing, not many 'c' racord instances. 
+        insert listOfCases;
+	}
