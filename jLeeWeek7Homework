@@ -51,6 +51,7 @@ public with sharing class WeekSevenHomework {
 			System.debug('Case Info: ' +c);
 		}
         //Create the cases in the database
+        // Not sure you need the UPSERT here, as there shouldnt be any old records to update rather than insert on this
 		upsert casesToInsert;
 	}
 
