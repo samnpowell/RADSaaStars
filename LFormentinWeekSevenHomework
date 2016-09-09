@@ -1,0 +1,66 @@
+public with sharing class WeekSevenHomework {
+	
+	//Assignment:  The following method is supposed to create the number of accounts specified in the argument that it takes.
+	//Each Account should be named 'Sample Account #sampleNumber'  where sample number is the count.  So if you created 2 Accounts
+	//one would be called 'Sample Account 1' and the other 'Sample Account 2'
+
+	//Also, when we're done inserting them, we will create a case for each one with a Status of 'New', Origin of 'New Account' and the
+	//desription and subject of your choice.  
+
+	//This isn't working quite right.  Can you use your debugging skills to fix it?  I had to comment it out since it won't compile
+	//Look out for consistency and formatting too!  (even if they don't break the code)
+	//Add comments to describe what the code is doing.
+	//After you get it to compile, run it in execute anonymous and check that it's really working!  Look up your new accounts in your org!
+
+    	// create a method that takes an integer (not a decimal) as a parameter? argument,..?
+	public static void createSampleAccounts (integer numberOfAccounts) {
+
+        // create a list to hold the accounts to insert
+		List < Account > acctList = new List < Account >();
+        
+        // set a counter and loop through the accounts 
+		for (Integer i = 1; i <= numberOfAccounts; i++) {
+			Account a	= new Account();
+			a.Name 		= 'Sample Account ' + i;
+		}
+		// insert the records using a DML statement
+		insert acctList;
+
+        // Create a list to hold the cases to insert
+		List < Case > casesToInsert = new List < Case >();
+
+        // Loop through the list of accounts we created to add a new case to each
+		for (Account a: acctList) {
+            
+            // make a counter for the sole purpose of incrementing on the case subject
+            // declare and initialise an integer variable because I can't refer to the other integer as it's in
+            // the for loop
+      integer i = 1;
+            
+            // create a new case and assign values to the fields
+			Case c			= new Case();
+			c.Status 		= 'New';
+			c.Origin 		= 'New Account';
+			c.AccountId 	=  a.Id;
+			c.Subject 		= 'New Case ' +i;
+			c.Description 	= 'Follow Up' + a.Name;
+            
+            //increment my variable at the end of the loop
+            i++;
+            
+            // add the case to the list we declared so we can insert them all at once #bulkification
+			casesToInsert.add(c);
+            
+            // always debug. always comment.
+            system.debug('Account name ' +a.Name + 'Case subject ' +c.Subject);
+            
+            // insert the cases!
+            
+            insert casesToInsert; 
+
+		}
+
+	}
+
+
+}
